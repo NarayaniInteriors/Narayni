@@ -7,7 +7,7 @@ DataRoute.get("/", async (req, res) => {
   try {
     const { category, length, width, page } = req.query;
     const itemsPerPage = 12;
-    const currentPage = page ? parseInt(page) : 1;
+    const currentPage = page ? parseInt(page) : 1; 
     const skipItems = (currentPage - 1) * itemsPerPage;
 
     const filterOptions = [];

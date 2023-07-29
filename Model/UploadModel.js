@@ -8,9 +8,9 @@ const uploadSchema = mongoose.Schema({
   category: { type: String, required: true },
   size: {
     _length: { type: Number, required: true },
-    _width: { type: Number, required: true },
+    _width: { type: Number, required: true }, 
   },
-});
+}); 
 
 const UploadModel = mongoose.model("Images", uploadSchema);
 module.exports = {

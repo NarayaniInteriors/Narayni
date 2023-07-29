@@ -27,8 +27,8 @@ app.listen(process.env.PORT,async(req,res)=>{
     try{
       await Connect
       console.log("server is running in Port 5000")
-    }
-    catch{
+    }  
+    catch(err){
         console.log("Server Error")
     }
 });
