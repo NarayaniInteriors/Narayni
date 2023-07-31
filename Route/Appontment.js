@@ -87,7 +87,7 @@ Appointment.post("/", async (req, res) => {
     await data.save();
     res.send(data);
   } catch (err) {
-    res.send("Post ERRoR");
+    res.send("ERRoR");
     console.log(err);
   }
 });
