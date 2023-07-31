@@ -46,9 +46,11 @@ DataRoute.get("/", async (req, res) => {
 
   DataRoute.get("/:id",async(req,res)=>{
     const id=req.params.id
+    console.log(id)
     try{
-       const data = await UploadModel.findOne({"_id":id})
-       res.send(data)
+       const data = await UploadModel.findOne({_id:id})
+       console.log(data)
+       res.send("data")
     }
     catch(err){
       res.send(err)
