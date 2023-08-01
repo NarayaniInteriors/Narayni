@@ -5,7 +5,26 @@ const {UploadModel} =require("../Model/UploadModel")
 
 DataRoute.get("/", async (req, res) => {
   try {
-    const { category, length, width, page } = req.query;
+
+
+    const { query } = req.query;
+
+    let data;
+
+    if (query) {
+      data = await UploadModel.find({
+        $or: [
+          { title: { $regex: query, $options: "i" } },
+          { category: { $regex: query, $options: "i" } }
+        ],
+      })
+        .sort({ date: "asc" })
+        .exec();
+        res.send(data)
+    }
+    else{
+
+      const { category, length, width, page } = req.query;
     const itemsPerPage = 12;
     const currentPage = page ? parseInt(page) : 1; 
     const skipItems = (currentPage - 1) * itemsPerPage;
@@ -37,7 +56,8 @@ DataRoute.get("/", async (req, res) => {
       .skip(skipItems)
       .limit(itemsPerPage);
 
-    res.status(200).json({ uploads, totalPages });
+    res.status(200).json({ uploads, totalPages })
+    };
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });
