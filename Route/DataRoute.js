@@ -50,7 +50,7 @@ DataRoute.get("/", async (req, res) => {
     try{
        const data = await UploadModel.findOne({_id:id})
        console.log(data)
-       res.send("data")
+       res.send(data)
     }
     catch(err){
       res.send(err)
